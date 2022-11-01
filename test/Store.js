@@ -33,12 +33,6 @@ describe("Store", function () {
       }
     });
 
-    it("Get Product by Id", async function () {
-      const product = await storeContract.getProductById(0);
-
-      expect(product.name).to.equal("Test");
-    });
-
     it("Update Product", async function () {
       await storeContract.updateProduct("Test", 5);
 
@@ -103,6 +97,25 @@ describe("Store", function () {
       } catch (error) {
         expect(error.message).to.equal(constants.INVALID_RETURN_PRODUCT);
       }
+    });
+
+    it("Get Product by Id", async function () {
+      const product = await storeContract.getProductById(0);
+
+      expect(product.name).to.equal("Test");
+    });
+
+    it("Get Products", async function () {
+      await storeContract.addProduct("Test3", 2, 2);
+      const product = await storeContract.getProducts();
+
+      expect(product.length).to.equal(3);
+    });
+
+    it("Get Buyers from product", async function () {
+      const buyers = await storeContract.getBuyerAddressesPerProduct(0);
+
+      expect(buyers.length).to.equal(1);
     });
   });
 });

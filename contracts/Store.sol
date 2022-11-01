@@ -79,12 +79,12 @@ contract Store {
         products[productNames[productName] - 1].quantity += 1;
     }
 
-    function getProducts() public view returns (Product[] memory) {
-        return products;
-    }
-
     function getProductById(uint _id) public view returns (Product memory) {
         return products[_id];
+    }
+
+    function getProducts() public view returns (Product[] memory) {
+        return products;
     }
 
     function getBuyerAddressesPerProduct(uint _id)
