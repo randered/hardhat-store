@@ -95,7 +95,7 @@ contract Store {
         return buyersAddressesPerProduct[_id];
     }
 
-    function transfer(address payable _to, uint256 _amount) private onlyOwner {
+    function transfer(address payable _to, uint _amount) private onlyOwner {
         _to.transfer(_amount);
     }
 
